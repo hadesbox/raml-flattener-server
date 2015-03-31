@@ -10,7 +10,8 @@ http.createServer(function(req, res) {
         res.writeHead(200, {'Content-Type': 'text/plain' });
 
         res.end("Skiping this file");
-return;
+        
+        return;
 
     }
 
@@ -29,11 +30,11 @@ return;
         })
 
     } catch (err) {
-        console.log("Error crítico:", err)
+        console.log("Critical error:", err)
 
             res.writeHead(200, {'Content-Type': 'text/plain' });
 
-            res.end("Error critico");
+            res.end("Critical error");
 
     }
 
