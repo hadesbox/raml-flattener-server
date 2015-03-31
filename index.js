@@ -4,6 +4,16 @@ var http = require('http');
 
 http.createServer(function(req, res) {
 
+
+    if(req.url == "/favicon.ico"){
+
+        res.writeHead(200, {'Content-Type': 'text/plain' });
+
+        res.end("Skiping this file");
+return;
+
+    }
+
     srcFile = 'http://apiraml.digitalservices.es' + req.url
 
     console.log('will parse file http://apiraml.digitalservices.es' + req.url);
@@ -20,6 +30,11 @@ http.createServer(function(req, res) {
 
     } catch (err) {
         console.log("Error crítico:", err)
+
+            res.writeHead(200, {'Content-Type': 'text/plain' });
+
+            res.end("Error critico");
+
     }
 
 }).listen(3500);
