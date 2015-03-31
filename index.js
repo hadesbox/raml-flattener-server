@@ -1,4 +1,4 @@
-var raml = require('raml-parser');
+var flattener = require('flat-raml');
 
 var http = require('http');
 
@@ -8,14 +8,18 @@ http.createServer(function(req, res) {
 
     console.log('will parse file http://apiraml.digitalservices.es' + req.url);
 
-    var flattener = require('flat-raml');
+    try {
 
-    flattener.asString(srcFile).done(function(ramlstring) {
+        flattener.asString(srcFile).done(function(ramlstring) {
 
-        
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(ramlstring);
+            res.writeHead(200, {'Content-Type': 'text/plain' });
 
-    })
+            res.end(ramlstring);
+
+        })
+
+    } catch (err) {
+        document.getElementById("demo").innerHTML = err.message;
+    }
 
 }).listen(3500);
