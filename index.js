@@ -19,7 +19,7 @@ http.createServer(function(req, res) {
         })
 
     } catch (err) {
-        document.getElementById("demo").innerHTML = err.message;
+        console.log("Error crítico:", err)
     }
 
 }).listen(3500);
